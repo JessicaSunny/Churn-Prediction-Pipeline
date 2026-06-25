@@ -1,0 +1,42 @@
+name: CI
+
+# Runs on every push and every pull request targeting main
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Run tests
+        run: pytest tests/ -v
+
+  build:
+    # Only build the Docker image if tests passed -- this is the
+    # "CI gate" that stops broken code from ever reaching deployment
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t churn-prediction-api:${{ github.sha }} .
+
+      # Pushing to AWS ECR happens here in a real deployment -- left out
+      # deliberately so this workflow runs for free without AWS credentials.
+      # See README.md "Connecting to AWS" for the exact steps to add this.

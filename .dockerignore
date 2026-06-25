@@ -1,0 +1,9 @@
+data/
+tests/
+.github/
+.git/
+__pycache__/
+*.pyc
+server.log
+.pytest_cache/
+generate_synthetic_data.py
