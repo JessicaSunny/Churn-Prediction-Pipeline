@@ -1,9 +1,23 @@
 # Customer Churn Prediction — End-to-End ML Pipeline
 
-A churn prediction model served as a REST API, containerized, with automated
-testing (CI) and a path to AWS deployment (CD). Built as a learning project
-to demonstrate the full ML deployment pipeline: Git → CI → Docker → AWS → monitoring.
+A logistic regression model predicting customer churn risk, served as a live
+REST API. Demonstrates a complete production ML workflow: model training,
+containerization, automated testing (CI), and cloud deployment with monitoring.
 
+**Live demo:** https://churn-prediction-api-kc9j.onrender.com/docs
+
+**Stack:** Python, scikit-learn, FastAPI, Docker, GitHub Actions, Render
+
+**What it does:** predicts churn probability from customer attributes
+(contract type, tenure, monthly charges, services subscribed) and returns a
+risk tier (low/medium/high) to support retention campaign targeting.
+
+---
+
+## Setup & deployment guide
+
+The sections below are the full build-it-yourself walkthrough: local setup,
+testing, Docker, and deployment.
 ## Architecture
 
 ```
