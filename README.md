@@ -146,10 +146,3 @@ setup needed. Worth adding next:
 - A CloudWatch Alarm if error rate or latency spikes
 - Periodically re-running `train_model.py` against fresh data and comparing
   ROC-AUC to the previous version — this is the start of detecting **model drift**
-
-## For your CV / interview talking points
-
-- "Built and deployed an end-to-end ML pipeline for customer churn prediction"
-- "Containerized model served via AWS Lambda/API Gateway"
-- "CI/CD via GitHub Actions — automated testing gates every deployment"
-- "Designed for retention targeting — churn risk tiers (low/medium/high) map directly to campaign prioritization"
